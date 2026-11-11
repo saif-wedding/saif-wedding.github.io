@@ -56,11 +56,9 @@ main{
 }
 .inner{padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 h2{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:500;
-  font-size:2.3rem;
-  letter-spacing:.01em;
+  font-family:var(--script);
+  font-weight:400;
+  font-size:2.9rem;
   line-height:1.15;
   margin:0;
   text-wrap:balance;
@@ -144,7 +142,7 @@ h2{
 .to-name{
   min-width:190px;padding:0 10px 3px;
   border-bottom:1px solid rgba(255,255,255,.7);
-  font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.55rem;line-height:1.25;
+  font-family:var(--script);font-size:1.95rem;line-height:1.2;
   overflow-wrap:anywhere;
 }
 .tap{
@@ -176,7 +174,8 @@ h2{
   font-size:clamp(3.3rem, 16.5vw, 4.7rem);line-height:1;
 }
 .hero-text h1 .amp{display:block;font-size:.55em;line-height:1.15;color:#fdf3dc}
-.hero-text .date{font-size:1.02rem;letter-spacing:.2em;font-weight:500}
+.hero-text .date{font-size:1.4rem;letter-spacing:.1em;font-weight:600;text-shadow:0 1px 3px rgba(35,55,85,.75),0 2px 16px rgba(35,55,85,.6)}
+.hero-text .eyebrow{font-size:.84rem;text-shadow:0 1px 3px rgba(35,55,85,.7)}
 .petal{
   position:absolute;top:-20px;width:11px;height:14px;border-radius:80% 10% 80% 10%;
   background:#fff;opacity:.85;pointer-events:none;
@@ -251,8 +250,8 @@ h2{
   background:var(--paper);border:1px solid rgba(169,138,85,.55);
   padding:24px 16px 22px;display:grid;gap:4px;justify-items:center;
 }
-.event .eyebrow{color:var(--gold)}
-.event h3{margin:2px 0 0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:2.1rem;line-height:1.15;color:var(--sage-deep)}
+.event .eyebrow{color:var(--gold);font-family:var(--script);font-weight:400;font-size:1.6rem;line-height:1.1;letter-spacing:0;text-transform:none}
+.event h3{margin:2px 0 0;font-family:var(--script);font-weight:400;font-size:2.7rem;line-height:1.15;color:var(--sage-deep)}
 .event .when{font-size:1.2rem;font-weight:500}
 .event .time{color:var(--ink-soft);font-variant-numeric:lining-nums}
 
@@ -322,7 +321,7 @@ h2{
     <div class="hero-text inner">
       <span class="eyebrow">The wedding of</span>
       <h1>Saifuddin <span class="amp">&amp;</span> Zainab</h1>
-      <span class="date">13 · 12 · 2026</span>
+      <span class="date">13 December 2026</span>
     </div>
     <div id="petals" aria-hidden="true"></div>
   </section>
@@ -439,6 +438,7 @@ h2{
     if (m) raw = m[1].replace(/\+/g, ' ');
     else if (location.hash.length > 1 && location.hash.indexOf('=') < 0) raw = location.hash.slice(1).replace(/[-_]+/g, ' ');
     try { raw = decodeURIComponent(raw); } catch (e) {}
+    raw = raw.split(/https?:/i)[0]; // ignore a second link pasted straight after the name
     var guest = raw.replace(/\s+/g, ' ').trim().slice(0, 60);
     if (guest) {
       document.getElementById('to-name').textContent = guest;
@@ -494,7 +494,7 @@ h2{
 
   // sky
   var g = c.createLinearGradient(0, 0, 0, 1230);
-  g.addColorStop(0, '#7b97b6'); g.addColorStop(.5, '#a9bdd1'); g.addColorStop(.82, '#dfe6ea'); g.addColorStop(1, '#eef0ea');
+  g.addColorStop(0, '#6a88ab'); g.addColorStop(.36, '#8aa5c2'); g.addColorStop(.56, '#b3c5d6'); g.addColorStop(.82, '#dfe6ea'); g.addColorStop(1, '#eef0ea');
   c.fillStyle = g; c.fillRect(0, 0, 720, 1230);
 
   function blob(x, y, rx, ry, col){
@@ -504,7 +504,7 @@ h2{
     c.fillStyle = gr; c.beginPath(); c.arc(x, y, rx, 0, 7); c.fill(); c.restore();
   }
   // clouds
-  [[110,330,190,46],[610,270,210,52],[380,430,260,40],[70,520,160,34],[660,500,170,38]].forEach(function(k){ blob(k[0], k[1], k[2], k[3], 'rgba(255,255,255,.55)'); });
+  [[90,480,190,40],[640,450,200,44],[70,570,160,34],[660,590,170,38]].forEach(function(k){ blob(k[0], k[1], k[2], k[3], 'rgba(255,255,255,.55)'); });
 
   c.translate(0, 330); // scene sits in the lower part; names live in the sky above
 
